@@ -1,0 +1,24 @@
+// Code your testbench here
+// or browse Examples
+module abc;
+bit[3:0] var_x;
+ bit clk; 
+covergroup test_cg @(posedge clk);
+  cp_x : coverpoint var_x { bins low_bins[] = {[0:3]}; 
+                           bins med_bins = {[4:12]};}
+                           endgroup
+                           
+                          
+                            
+   
+                             
+                             test_cg ok=new;
+                       initial begin
+                         repeat(30)
+                           begin
+                             void'(randomize(var_x) with {var_x<13;});
+                               ok.sample();
+     $display("var_x=%d coverage=%.2f",var_x,ok.get_inst_coverage());
+                             end 
+  end
+                             endmodule
